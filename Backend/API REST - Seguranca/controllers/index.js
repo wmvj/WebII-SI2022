@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const bcrypt = require('bcryptjs')
 
 exports.showIndex = (req, res, next) => {
     res.render('index')
@@ -16,10 +17,11 @@ exports.get404Page = (req, res, next) => {
     res.status(404).render('404')
 }
 
-exports.signup = (req, res, next) => {
+exports.signup = async (req, res, next) => {
     const {username, email, password} = req.body
-    console.log(username, email, password)
-    const user = new User(username, email, password)
+    const hashedPassword = await bcrypt.hash(password, 10)
+    // console.log(username, email, password)
+    const user = new User(username, email, hashedPassword)
     try {
         user.save()
         res.redirect('/')
@@ -27,4 +29,37 @@ exports.signup = (req, res, next) => {
         console.log(error)
         res.redirect('/signup')
     }
+}
+
+exports.login = async(req, res, next) =>{
+    const {email, password} = req.body
+    const user = await User.findOne(email,password)
+    try {
+        if(user){
+            req.session.user = user
+            res.redirect('/members')
+        } else{
+            res.render('index')
+        }
+    } catch (error) {
+        console.log(error)
+        res.render('index')
+    }
+}
+
+exports.checkAuth = (req, res, next) => {
+    if(req.session && req.session.user){
+        next()
+    } else{
+        res.redirect('/')
+    }
+}
+
+exports.logout = (req, res, next) => {
+    req.session.destroy(err => {     
+        if(err){
+            console.log(err)
+        }
+        res.redirect('/')
+    })
 }

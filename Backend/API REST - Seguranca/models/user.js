@@ -1,5 +1,5 @@
 const getDB = require('../util/database').getDb
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcrypt')
 
 class User{
     constructor(username, email, password){

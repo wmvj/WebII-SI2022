@@ -19,7 +19,7 @@ router.get('/', controller.showIndex)
 router.post('/', controller.login)
 router.get('/signup', controller.showPageSignUp)
 router.post('/signup', controller.signup)
-router.get('/members',controller.checkAuth, controller.showMembersPage)
+router.get('/members', controller.checkAuth, controller.showMembersPage)
 router.get('/logout', controller.logout)
 router.use(controller.get404Page)
 

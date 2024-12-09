@@ -1,5 +1,5 @@
 const User = require('../models/user')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcrypt')
 
 exports.showIndex = (req, res, next) => {
     res.render('index')
@@ -33,7 +33,7 @@ exports.signup = async (req, res, next) => {
 
 exports.login = async(req, res, next) =>{
     const {email, password} = req.body
-    const user = await User.findOne(email,password)
+    const user = await User.findOne(email, password)
     try {
         if(user){
             req.session.user = user

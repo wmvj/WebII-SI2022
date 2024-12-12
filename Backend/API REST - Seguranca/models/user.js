@@ -19,6 +19,7 @@ class User{
         if(!user){
             return null
         }
+        
         const passwordMatch = await bcrypt.compare(password, user.password)
         if(passwordMatch){
             return user

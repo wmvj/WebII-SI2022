@@ -8,7 +8,7 @@ export function Header() {
 
   return (
     <header>
-        <h1 className="text-5xl">Titulo da página({countCtx.onlineCount})</h1>
+        <h1 className="text-5xl p-3">Página contador de usuários On-line({countCtx.onlineCount})</h1>
         <OnlineUsers/>
     </header>
   );

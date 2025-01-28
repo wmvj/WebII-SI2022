@@ -11,8 +11,8 @@ export function OnlineUsers() {
 
   return (
     <>
-      <p>Online: {countCtx.onlineCount}</p>
-      <button onClick={handleZero}>Vamos zerar os valores!</button>
+      <p className="p-3 text-3xl">Online: {countCtx.onlineCount}</p>
+      <button onClick={handleZero} className="bg-black text-white border px-4 py-3 rounded-md">Vamos zerar os valores!</button>
     </>
   );
 }

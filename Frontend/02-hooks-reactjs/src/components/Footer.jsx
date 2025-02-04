@@ -8,7 +8,7 @@ export function Footer() {
 
     const [list, setList] = useState([])
     const [filter, setFilter] = useState("")
-    const [filterList, setfilterList] = useState([])
+    // const [filterList, setfilterList] = useState([])
 
     // Primeiro exemplo de useEffect
     useEffect(() =>{
@@ -26,10 +26,11 @@ export function Footer() {
     }, [])
 
     // Terceiro exemplo de useEffect
-    useEffect(() =>{
-        setfilterList(list.filter(item => item.includes(filter)))
-    },[filter])
+    // useEffect(() =>{
+    //     setfilterList(list.filter(item => item.includes(filter)))
+    // },[filter])
 
+    const filterList = list.filter(item => item.includes(filter))
 
     function addList(){
         setList(state => [...state, "Novo item"])

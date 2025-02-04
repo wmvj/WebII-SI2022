@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import { api } from '../api'
-import {listPhotos} from '../components/listPhotoItem'
+import {listPhotoItem} from '../components/listPhotoItem'
 
 export const Home = () => {
     const [list, setList] = useState([])
@@ -15,9 +15,9 @@ export const Home = () => {
     return(
         <div>
             {list.map9((item, index)=>(
-               <listPhotos>
+               <listPhotoItem>
 
-               </listPhotos> 
+               </listPhotoItem> 
             ))}
         </div>
     )

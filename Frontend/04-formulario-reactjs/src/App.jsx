@@ -24,12 +24,11 @@ const {
             placeholder='Digite seu nome'
           />
           <br />
-            {...register('name', {required: true, minLength: 3, maxLength: 20})}
             {errors.name?.type === 'required' && <p>O campo nome é obrigatório</p>}
             {errors.name?.type === 'minLength' && <p>Precisa ter 2 caracteres</p>}
 
           <input
-            {...register('lastName')}
+            {...register('lastName', {pattern: /^[a-zA-Z]+$/})}
             placeholder='Digite seu sobrenome'
           />
           
@@ -43,7 +42,7 @@ const {
           {errors.age?.type === 'min' && <p>Precisa ser maior que 18 anos</p>}
           {errors.age?.type === 'max' && <p>Precisa ser menor que 65 anos</p>}
 
-          <input type='submit' value={Enviar} />
+          <input type='submit' value="Enviar" />
         
         </form>
       </div>

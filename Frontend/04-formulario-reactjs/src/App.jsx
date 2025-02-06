@@ -1,0 +1,54 @@
+import './App.css'
+import {useForm} from 'react-hook-form'
+
+function App() {
+
+const {
+      register, 
+      handleSubmit,
+      formState: {errors}
+    } = useForm()
+
+    const handleFormSubmit = (data) => {
+      console.log(data)
+    }
+
+  return (
+    <>
+      <div>
+        <form
+           onSubmit={handleSubmit(handleFormSubmit)}
+        >
+          <input 
+            {...register('name', {required: true, minLength: 3, maxLength: 20})}
+            placeholder='Digite seu nome'
+          />
+          <br />
+            {...register('name', {required: true, minLength: 3, maxLength: 20})}
+            {errors.name?.type === 'required' && <p>O campo nome é obrigatório</p>}
+            {errors.name?.type === 'minLength' && <p>Precisa ter 2 caracteres</p>}
+
+          <input
+            {...register('lastName')}
+            placeholder='Digite seu sobrenome'
+          />
+          
+          <br />
+          <input
+            type='number'
+            {...register('age', {required: true, min: 18, max: 65})}
+            placeholder='Digite sua idade'
+          />
+          <br />
+          {errors.age?.type === 'min' && <p>Precisa ser maior que 18 anos</p>}
+          {errors.age?.type === 'max' && <p>Precisa ser menor que 65 anos</p>}
+
+          <input type='submit' value={Enviar} />
+        
+        </form>
+      </div>
+    </>
+  )
+}
+
+export default App

@@ -1,4 +1,5 @@
 import './App.css'
+import { Input } from './components/Input'
 import {useForm} from 'react-hook-form'
 
 function App() {
@@ -6,7 +7,8 @@ function App() {
 const {
       register, 
       handleSubmit,
-      formState: {errors}
+      formState: {errors},
+      control
     } = useForm()
 
     const handleFormSubmit = (data) => {
@@ -19,7 +21,25 @@ const {
         <form
            onSubmit={handleSubmit(handleFormSubmit)}
         >
-          <input 
+
+          <Input
+            control={control}
+            name='name'
+            rules={{required: true, minLength: 3, maxLength: 20}}
+          />
+
+          <Input
+            control={control}
+            name='lastName'
+          />
+
+          <Input
+             control={control}
+             name='age'
+             rules={{required: true, min: 18, max: 65}}
+          />
+
+          {/* <input 
             {...register('name', {required: true, minLength: 3, maxLength: 20})}
             placeholder='Digite seu nome'
           />
@@ -40,7 +60,7 @@ const {
           />
           <br />
           {errors.age?.type === 'min' && <p>Precisa ser maior que 18 anos</p>}
-          {errors.age?.type === 'max' && <p>Precisa ser menor que 65 anos</p>}
+          {errors.age?.type === 'max' && <p>Precisa ser menor que 65 anos</p>} */}
 
           <input type='submit' value="Enviar" />
         

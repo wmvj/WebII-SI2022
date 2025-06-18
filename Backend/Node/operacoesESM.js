@@ -31,3 +31,15 @@ function subtracao (a,b){
 }
 
 export default soma
+
+// QUARTA OPCAO
+
+export class Calculadora{
+    soma (a,b){
+        return a+b
+    }
+
+    subtracao (a,b){
+        return a-b
+    }
+}

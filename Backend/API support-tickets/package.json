@@ -1,0 +1,13 @@
+{
+  "name": "api-support-tickets",
+  "version": "1.0.0",
+  "main": "./src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "Warley Jr",
+  "license": "ISC",
+  "description": ""
+}

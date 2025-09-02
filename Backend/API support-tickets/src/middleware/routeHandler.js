@@ -1,4 +1,4 @@
-import { routes } from "../routes";
+import { routes } from "../routes/index.js";
 
 export function routeHandler(req, res) {
     const route = routes.find((route) => {
@@ -6,7 +6,7 @@ export function routeHandler(req, res) {
     });
 
     if (route) {
-        return route.controler(req, res);
+        return route.controller({req, res});
     }
     return res.writeHead(404).end();
 }

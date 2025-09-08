@@ -9,8 +9,3 @@ async function listener(request, response){
 
 http.createServer(listener).listen(3333);
 
-// const server = http.createServer((request, response) => {
-
-// })
-
-// server.listen(3333)

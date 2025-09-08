@@ -32,10 +32,10 @@ export class Database {
     select(table, filters) {
         let data = this.#database[table] ?? []; // procura pela tabela e se n existir retorna vazio
 
-        if (filters) {
+        if (filters) { // verifica se existe filtro
             data = data.filter((row) => {
-                return Object.entries(filters).some(([key, value]) => {
-                    return row[key].toLowerCase().includes(value.toLowerCase());
+                return Object.entries(filters).some(([key, value]) => { // separa entre a chave e valor
+                    return row[key].toLowerCase().includes(value.toLowerCase()); // verifica se nessa chave existe o valor (closed ou open)
                 });
             });
         }
@@ -46,9 +46,9 @@ export class Database {
     update(table, id, data) {
 
         const rowIndex = this.#database[table].findIndex((row) =>
-            row.id === id)
+            row.id === id) // se n encontra o registro retorna -1
 
-        if (rowIndex > -1) { // se n encontra o registro retorna -1
+        if (rowIndex > -1) { 
             this.#database[table][rowIndex] = {
                 ...this.#database[table][rowIndex], // pega o conteudo atual do BD
                 ...data, // sobreescreve sobre o registro anterior

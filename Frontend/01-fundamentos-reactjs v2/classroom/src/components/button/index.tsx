@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import styles from "./styles.module.css"
 
 type Props = React.ComponentProps<"button"> & {
@@ -5,6 +6,11 @@ type Props = React.ComponentProps<"button"> & {
 }
 
 export function Button({name, ...rest}: Props){
+
+  useEffect(() =>{
+    console.log("useEffect do componente")
+  },[])
+  
     return ( 
         <button className={styles.container} {...rest}>
           <span>

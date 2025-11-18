@@ -38,7 +38,7 @@ export default function App() {
 
   return (
     <div>
-      <h1>Evento</h1>
+      <h1 className="text-xxs text-green-200 font-bold underline">Evento</h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
